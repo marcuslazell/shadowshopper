@@ -1,5 +1,4 @@
 import time
-import requests
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options as FireFoxOptions
@@ -24,9 +23,16 @@ time.sleep(1)
 
 # Button Click
 driver.find_element(By.ID, 'login-button').click()
-if driver.current_url == 'https://www.saucedemo.com/inventory.html': {
+
+# Makes sure the login creds were correct
+if driver.current_url == 'https://www.saucedemo.com/inventory.html':
+    {
     print ("Login Successful.")
 }
+else:
+    {
+        print ("Login Failed")
+    }
 
 # Stops the program
 time.sleep(2)
