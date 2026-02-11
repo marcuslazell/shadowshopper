@@ -10,7 +10,7 @@ driver = webdriver.Firefox()
 # This opens the testing website
 driver.get("https://www.saucedemo.com")
 
-# For Visual Purposes & Slow Internet Connections
+# For Visual Purposes & Slower internet connections
 wait = WebDriverWait(driver, 10)
 
 # This block of code enters in the login credentials 
@@ -22,12 +22,10 @@ password.send_keys("secret_sauce")
 # Button Click 
 driver.find_element(By.ID, 'login-button').click()
 
-# Makes sure the login creds were correct
-if driver.current_url == 'https://www.saucedemo.com/inventory.html':
-    print ("Login Successful.")
+wait.until(EC.url_to_be('https://www.saucedemo.com/inventory.html'))
+print ("Login Successful.")
+driver.find_element(By.ID, 'add-to-cart-sauce-labs-backpack').click()
+print ("Backpack added to cart")
 
-else:
-        print ("Login Failed")
-    
 # Stops the program
 driver.quit()
