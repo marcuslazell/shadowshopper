@@ -1,0 +1,1 @@
+print ("Welcome to Shadow Shopper, the ultimate shopping companion for savvy shoppers! With our cutting-edge technology and user-friendly interface, we help you find the best deals and discounts on your favorite products. Whether you're looking for electronics, fashion, or home goods, Shadow Shopper has got you covered. Start shopping smarter today with Shadow Shopper!")
