@@ -24,8 +24,36 @@ driver.find_element(By.ID, 'login-button').click()
 
 wait.until(EC.url_to_be('https://www.saucedemo.com/inventory.html'))
 print ("Login Successful.")
-driver.find_element(By.ID, 'add-to-cart-sauce-labs-backpack').click()
-print ("Backpack added to cart")
+backpack_btn = wait.until(EC.element_to_be_clickable((By.ID, "add-to-cart-sauce-labs-backpack")))
+backpack_btn.click()
+print("Backpack added to cart")
+
+# Get to the checkout out screen
+shopping_cart = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, "shopping_cart_badge")))
+shopping_cart.click()
+print("Shopping cart has been open")
+check_out = wait.until(EC.element_to_be_clickable((By.ID, "checkout")))
+check_out.click()
+
+# Checkingout
+first_name = wait.until(EC.visibility_of_element_located((By.ID, "first-name")))
+first_name.send_keys("Marc")
+last_name = wait.until(EC.visibility_of_element_located((By.ID, "last-name")))
+last_name.send_keys("Shaw")
+postal_code = wait.until(EC.visibility_of_element_located((By.ID, "postal-code")))
+postal_code.send_keys("91210")
+
+continue_button = wait.until(EC.element_to_be_clickable((By.ID, "continue")))
+continue_button.click()
+
+finish_button = wait.until(EC.element_to_be_clickable((By.ID, "finish")))
+finish_button.click()
+
+if EC.visibility_of_element_located((By.CLASS_NAME, "complete-header")):
+    print("ORDER COMPLETE!")
+
+else:
+    print("Order Failed")
 
 # Stops the program
 driver.quit()
