@@ -49,11 +49,22 @@ continue_button.click()
 finish_button = wait.until(EC.element_to_be_clickable((By.ID, "finish")))
 finish_button.click()
 
-if EC.visibility_of_element_located((By.CLASS_NAME, "complete-header")):
-    print("ORDER COMPLETE!")
+try:
+    # Wait for the success message
+    wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "complete-header")))
+    
+    # Grab the text to be double sure
+    success_text = driver.find_element(By.CLASS_NAME, "complete-header").text
+    
+    # Verify the text matches exactly
+    if "Thank you for your order!" in success_text:
+        print("TEST PASSED: Order Complete!")
+    else:
+        print(f"TEST FAILED: Text mismatch. Found: {success_text}")
 
-else:
-    print("Order Failed")
+except:
+    # If the wait times out (element never appeared)
+    print("TEST FAILED: Success message never appeared.")
 
 # Stops the program
 driver.quit()
