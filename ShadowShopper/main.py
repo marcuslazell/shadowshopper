@@ -13,8 +13,6 @@ def setup_browser():
 
 # Modular Login Logic
 def login(user, password):
-     # user = "standard_user"
-     # password = "secret_sauce"
     wait.until(EC.visibility_of_element_located((By.ID, "user-name"))).send_keys(user)
     wait.until(EC.visibility_of_element_located((By.ID, "password"))).send_keys(password)
     driver.find_element(By.ID, 'login-button').click()
@@ -31,9 +29,6 @@ def add_backpack_to_cart ():
 
 # Check out with parameters
 def checkout(first_name, last_name, zip_code):
-    # first_name = "Marc"
-    # last_name = "Shaw"
-    # zip_code = 91210
     wait.until(EC.visibility_of_element_located((By.ID, "first-name"))).send_keys(first_name)
     wait.until(EC.visibility_of_element_located((By.ID, "last-name"))).send_keys(last_name)
     wait.until(EC.visibility_of_element_located((By.ID, "postal-code"))).send_keys(zip_code)
@@ -71,6 +66,4 @@ if __name__ == "__main__":
     checkout("Marc", "Shaw", "91325")
     verify_order()
     teardown()
-
-# Stops the program
-driver.quit()
+    
