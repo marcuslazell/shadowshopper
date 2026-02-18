@@ -67,4 +67,4 @@ if __name__ == "__main__":
         bot.checkout("Marc", "Shaw", "91325")
         bot.verify_order()
         bot.teardown()
-    
+        
